@@ -1,0 +1,81 @@
+#!/usr/bin/env python
+from __future__ import print_function
+import subprocess
+import sys
+import os
+import numpy as np
+from array import array
+
+# filename: filename containing the data to extract
+# dt: data type numpy style
+def extract(filename,dt):
+    arr = np.fromfile(filename,dt)
+    return np.reshape(arr,(arr.shape[0]/2,2))[:,1]
+
+# filename: filename where to save the data
+# arr: python array to be saved
+# dt: data type python array style
+def save(filename,arr,dt):
+    fp = open(filename,'w')
+    arrDump = array(dt,arr)
+    arrDump.tofile(fp)
+    fp.close()
+
+# Extract the phase from a complex image and save it.
+# filein: input file containing the magnitude and  phase data
+# fileout: outpu filename where the phase is saved
+def extractPhase(filein,fileout):
+    save(fileout,extract(filein,'<f'),'f')
+
+
+# Grid an input image
+# filein: the input geoimage
+# fileout: the output geoimage gridded
+# corners: [lonmin,lonmax,latmin,latmax]
+# deltas: [deltalon,deltalat]
+def gridImage(filein,fileout,corners,deltas):
+    command = 'xyz2grd -V -R' + str(corners[0]) + '/' + str(corners[1]) + '/' + str(corners[2]) + '/' + str(corners[3]) \
+            + ' -I' +  str(deltas[0]) + '/' +  str(deltas[1]) + ' ' + filein +  ' -F -ZTLf -N0.0 -Ddegres/degres/radians/=/=/unwrapped_phase/ -G' + fileout 
+    print(command)
+    subprocess.call(command,shell = True)
+
+
+def phaseToMeters(filein,fileout):
+    command = 'grdmath ' + filein +' 2 DIV 3.14159 DIV 0.015 MUL = ' + fileout
+    print(command)
+    subprocess.call(command,shell = True)
+
+def tropoCorrection(filein,datetime1,datetime2):
+    date1 = datetime1.date().isoformat()
+    date2 = datetime2.date().isoformat()
+    time1 = datetime1.time()
+    time2 = datetime2.time()
+    hour1 = time1.hour
+    hour2 = time2.hour
+    min1 = time1.minute
+    min2 = time2.minute
+    command = 'tropwrap.py -igram ' + filein + ' -date1 ' + str(date1) + \
+    ' -date2 ' + str(date2)  + ' -hour1 ' + str(hour1) + ' -min1 '+ str(min1) + ' -hour2 ' + \
+    str(hour2) + ' -min2 ' + str(min2) + ' -gps gipsy -Wx off -interp triang -png on'
+    print(command)
+    subprocess.call(command,shell = True)
+
+
+def main(argv):
+    #test extractPhase
+    #extractPhase(argv[0],argv[1])
+
+    #test gridImage
+    width = 1215
+    length = 2048
+    delta = 0.0008333333333
+    latmin = 30.951666667
+    lonmin = -115.490833333
+    latmax = latmin + delta*length
+    lonmax = lonmin + delta*width
+    gridImage(argv[0],argv[0] + '.grd',[lonmin,lonmax,latmin,latmax],[delta,delta])
+
+    #test phaseToMeters
+    phaseToMeters(argv[0] + '.grd',argv[0] + '.grd.m')
+if __name__ == '__main__':
+    sys.exit(main(sys.argv[1:]))

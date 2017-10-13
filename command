@@ -1,0 +1,1 @@
+python tropwrap.py -igram geo_120928-121014-sim_HDR_8rlks.m.grd -date1 2012-09-28 -date2 2012-10-14 -hour1 04 -min1 07 -hour2 04 -min2 07 -gps gipsy -Wx off -interp triang -png on -workdir /tmp/tropwork

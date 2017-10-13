@@ -1,0 +1,137 @@
+commit 5dfa89e8e789112b3103c24bc46a49a8ecb988e9
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Fri Jan 9 00:20:48 2015 +0000
+
+    Moved zipfile.py since it's old and conflicts with standard lib.
+    
+    svn path=/trunk/ARIAMH-CCMODS/tropmap/; revision=8104
+
+commit bada351a17ca764e45c2067a894db1d7144936c2
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Mon Sep 8 19:45:59 2014 +0000
+
+    Comment out pdb debugging.
+    
+    svn path=/trunk/ARIAMH-CCMODS/tropmap/; revision=7584
+
+commit 6fc5b8213eb0d4427a3bd83f4e9c4bd395e6aafa
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Aug 14 22:30:02 2014 +0000
+
+    added dump of pickle file when only delay computed
+    
+    svn path=/trunk/ARIAMH-CCMODS/tropmap/; revision=7410
+
+commit c072e3e185cb88bf234f4a7f834ba7fc18668809
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Wed Feb 5 17:12:03 2014 +0000
+
+    forgot one dump of context file
+    
+    svn path=/trunk/ARIAMH-CCMODS/tropmap/; revision=6537
+
+commit da222b1e316077c6ea13b879c26c98a3678c688e
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Mon Feb 3 23:54:33 2014 +0000
+
+    updated the toContext
+    
+    svn path=/trunk/ARIAMH-CCMODS/tropmap/; revision=6521
+
+commit 153503be3f83eb3f22474ef7f4ecbb6bb2610dff
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Jan 16 23:43:21 2014 +0000
+
+    added the context management for return status for tropmap
+    
+    svn path=/trunk/ARIAMH-CCMODS/tropmap/; revision=6418
+
+commit 71286f25896e3c491af7ae2a863c5814a9dfd4b2
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Wed Dec 18 16:57:22 2013 +0000
+
+    modified so that the object passed to pyAPSCorrect.py is the InsarMH
+    
+    svn path=/trunk/ARIAMH-CCMODS/tropmap/; revision=6338
+
+commit eae8dd1d4362a93481a91c7fad19bad0e21f9a62
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Dec 17 18:11:50 2013 +0000
+
+    see previous commit comments
+    
+    svn path=/trunk/ARIAMH-CCMODS/tropmap/; revision=6335
+
+commit 9428966a1bf1441e226c3289ec4e766bd52c52db
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Dec 12 19:33:53 2013 +0000
+
+    Added check for error in creating corrections and using the uncorrected one if error occurs.
+    removed some name coupling between the corrections calculation and the isce part. Added dumping of xml files for images
+    
+    svn path=/trunk/ARIAMH-CCMODS/tropmap/; revision=6308
+
+commit 4a55311711d912dcf1a99baa1a2994809fa48cf1
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Wed Dec 11 06:19:46 2013 +0000
+
+    Comment out pdb.
+    
+    svn path=/trunk/ARIAMH-CCMODS/tropmap/; revision=6296
+
+commit eece45e6fa09311e00adb69bbfd9a23ea5d43529
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Dec 5 23:00:06 2013 +0000
+
+    added pyAPSCorrect.py
+    
+    svn path=/trunk/ARIAMH-CCMODS/tropmap/; revision=6264
+
+commit 95a86f89b9db23aeff837f7c3fc64bdf0cd21aea
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Nov 19 21:34:22 2013 +0000
+
+    set to zero NaNs in tropo correction. Added the los angle factor to the corrections. Piyush fixed also the lat that was reversed.
+    
+    svn path=/trunk/ARIAMH-CCMODS/tropmap/; revision=6222
+
+commit 5accca6139ac91fa7dbc2c1d653c6d7497e61395
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Oct 24 18:44:54 2013 +0000
+
+    By default create temp directory in CWD.
+    
+    svn path=/trunk/ARIAMH-CCMODS/tropmap/; revision=6067
+
+commit 0be1cdbf76959259e8c916cce75f46aab1518855
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Fri Sep 13 16:57:30 2013 +0000
+
+    add some comments in tropoUtils.py
+    
+    svn path=/trunk/ARIAMH-CCMODS/tropmap/; revision=5816
+
+commit 14f326223029c321a640b677da8e852bc7c97024
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Wed Sep 4 22:36:10 2013 +0000
+
+    integrated and debugged new tromap (changed default output_file from . to output otherwise crashes)
+    . Added change of coordinate from geo to radar for the tropocorrections.
+    
+    svn path=/trunk/ARIAMH-CCMODS/tropmap/; revision=5777
+
+commit 1f377494939f2afcefc4addf94e29ea18e0594a5
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Jul 16 18:17:37 2013 +0000
+
+    Synced from svn.kawigi.com.
+    
+    svn path=/trunk/ARIAMH-CCMODS/tropmap/; revision=5543
+
+commit b565e064620382d9aafa914ab076fd9302d91d13
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Fri May 31 15:56:43 2013 +0000
+
+    Synced from svn.kawigi.com.
+    
+    svn path=/trunk/ARIAMH-CCMODS/tropmap/; revision=5427
